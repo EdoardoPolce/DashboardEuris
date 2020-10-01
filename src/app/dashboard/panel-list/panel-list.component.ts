@@ -20,6 +20,9 @@ export class PanelListComponent implements OnInit {
     this.storeService.getProductList('ijpxNJLM732vm8AeajMR').subscribe(products => {
         this.productsList = products;
         this.loaded = true;
+      },
+      error => {
+        console.log(error);
       }
     );
   }

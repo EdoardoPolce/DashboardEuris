@@ -1,13 +1,8 @@
-.card-container {
-  border: solid 1px;
-  border-radius: .5rem;
-  padding: 1rem;
+.mat-expansion-panel-header-description {
+  justify-content: end;
 }
 
-.card-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.review-accordion {
+  margin: 1rem;
 }
-
 

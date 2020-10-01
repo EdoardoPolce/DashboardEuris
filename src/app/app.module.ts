@@ -13,8 +13,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {PanelListComponent} from './dashboard/panel-list/panel-list.component';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { ProductCardComponent } from './dashboard/panel-list/product-card/product-card.component';
+import {ProductCardComponent} from './dashboard/panel-list/product-card/product-card.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatIconModule,
     RouterModule,
     RoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatExpansionModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

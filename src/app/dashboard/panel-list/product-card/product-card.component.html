@@ -1,17 +1,42 @@
-<div class="card-container">
-  <div class="card-title">
-    <h2>{{product.title}}</h2>
-    <button mat-icon-button class="edit-icon">
-      <mat-icon>edit</mat-icon>
-    </button>
-  </div>
-  <div>
-    {{product.category}}
-    {{product.description}}
-    {{product.price}}
-    {{product.employee}}
-    {{product.reviews && product.reviews[0].description}}
-  </div>
-</div>
+<mat-card>
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutAlign="space-between" class="card-title">
+      <h2>{{product.title}}</h2>
+      <button mat-icon-button class="edit-icon">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div>
+      <p>Categoria: {{product.category}}</p>
+      <p>{{product.description}}</p>
+      <p>Prezzo: {{product.price}}</p>
+      <p>Dipendente: {{product.employee}}</p>
+      <mat-accordion *ngIf="product.reviews">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Commenti
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngFor="let review of product.reviews">
+            <mat-accordion class="review-accordion" *ngIf="product.reviews">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <div>{{review.title}}</div>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    <div>{{review.user}}</div>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>{{review.description}}</p>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </mat-card-content>
+</mat-card>
 
 
