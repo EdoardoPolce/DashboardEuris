@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   @Input() isMobile: boolean;
   @Output() changeLayoutValue: EventEmitter<boolean> = new EventEmitter();
   private layoutValue = true;
+  public iconValue = 'view_module';
 
   constructor() {
   }
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
   }
 
   changeLayout(): void {
+    this.iconValue = this.layoutValue ? 'view_list' : 'view_module';
     this.layoutValue = !this.layoutValue;
     this.changeLayoutValue.emit(this.layoutValue);
   }

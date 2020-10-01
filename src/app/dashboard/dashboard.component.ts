@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {StoreServiceService} from '../services/store-service.service';
 import {Subscription, combineLatest} from 'rxjs';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Chart} from 'chart.js';
 
 @Component({
@@ -17,14 +16,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public columnLayout = true;
   public chart: Chart = [];
 
-  constructor(private storeService: StoreServiceService, private breakpointObserver: BreakpointObserver) {
-    this.breakpointObserver.observe([
-      Breakpoints.Small,
-      Breakpoints.XSmall
-    ]).subscribe(result => {
-      this.isMobile = result.breakpoints[Breakpoints.Small] || result.breakpoints[Breakpoints.XSmall];
-      this.columnLayout = !result.breakpoints[Breakpoints.Small] || !result.breakpoints[Breakpoints.XSmall];
-    });
+  constructor(private storeService: StoreServiceService) {
   }
 
   ngOnInit(): void {

@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
   <span>{{appName}}</span>
   <span class="example-spacer"></span>
-  <button *ngIf="!isMobile" (click)="changeLayout()" mat-icon-button class="menu-icon">
-    <mat-icon>menu</mat-icon>
+  <button [fxHide]="true" [fxHide.gt-xs]="false" (click)="changeLayout()" mat-icon-button class="menu-icon">
+    <mat-icon>{{iconValue}}</mat-icon>
   </button>
   <button  mat-icon-button class="plus-icon">
     <mat-icon>add</mat-icon>

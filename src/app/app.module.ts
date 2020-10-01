@@ -14,6 +14,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {PanelListComponent} from './dashboard/panel-list/panel-list.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ProductCardComponent } from './dashboard/panel-list/product-card/product-card.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProductCardComponent } from './dashboard/panel-list/product-card/produc
     MatToolbarModule,
     MatIconModule,
     RouterModule,
-    RoutingModule
+    RoutingModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

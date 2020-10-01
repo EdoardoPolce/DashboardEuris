@@ -1,5 +1,5 @@
-<div *ngIf="loaded" [ngClass]="{'container': columnLayout}">
-  <div class="product" [ngClass]="{'item': columnLayout}" *ngFor="let product of productsList">
+<div *ngIf="loaded" fxLayout="column" fxFlex="100" [fxLayout.gt-xs]="columnLayout ? 'row wrap' : 'column'">
+  <div class="product" fxFlex.gt-md="30" fxFlex="40" *ngFor="let product of productsList">
     <app-product-card [product]="product.data"></app-product-card>
   </div>
 </div>
