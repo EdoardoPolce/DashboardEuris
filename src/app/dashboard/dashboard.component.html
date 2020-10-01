@@ -1,0 +1,13 @@
+<app-header (changeLayoutValue)="changeLayout($event)" [isMobile]="isMobile" [appName]="appName"></app-header>
+<section>
+  <div class="section-container">
+    <div class="section-content">
+      <app-panel-list [columnLayout]="columnLayout"></app-panel-list>
+    </div>
+  </div>
+
+  <div *ngIf="chart">
+    <canvas id="canvas">{{ chart }}</canvas>
+  </div>
+</section>
+

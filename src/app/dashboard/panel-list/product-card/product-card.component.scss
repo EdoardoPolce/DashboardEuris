@@ -1,0 +1,13 @@
+.card-container {
+  border: solid 1px;
+  border-radius: .5rem;
+  padding: 1rem;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+

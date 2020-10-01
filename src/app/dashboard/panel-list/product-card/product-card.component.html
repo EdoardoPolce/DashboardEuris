@@ -1,0 +1,17 @@
+<div class="card-container">
+  <div class="card-title">
+    <h2>{{product.title}}</h2>
+    <button mat-icon-button class="edit-icon">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <div>
+    {{product.category}}
+    {{product.description}}
+    {{product.price}}
+    {{product.employee}}
+    {{product.reviews && product.reviews[0].description}}
+  </div>
+</div>
+
+

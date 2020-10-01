@@ -1,0 +1,7 @@
+<div *ngIf="loaded" [ngClass]="{'container': columnLayout}">
+  <div class="product" [ngClass]="{'item': columnLayout}" *ngFor="let product of productsList">
+    <app-product-card [product]="product.data"></app-product-card>
+  </div>
+</div>
+
+<div *ngIf="!loaded">Loading</div>
