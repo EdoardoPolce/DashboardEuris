@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ProductModalComponent} from '../product-modal/product-modal.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +16,7 @@ export class HeaderComponent implements OnInit {
   private layoutValue = true;
   public iconValue = 'view_module';
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -26,4 +28,13 @@ export class HeaderComponent implements OnInit {
     this.changeLayoutValue.emit(this.layoutValue);
   }
 
+  openModal(): void {
+    const dialogRef = this.dialog.open(ProductModalComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }

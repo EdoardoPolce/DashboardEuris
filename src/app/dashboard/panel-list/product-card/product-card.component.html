@@ -3,7 +3,7 @@
     <div fxLayout="row" fxLayoutAlign="space-between" class="card-title">
       <h2>{{product.title}}</h2>
       <button mat-icon-button class="edit-icon">
-        <mat-icon>edit</mat-icon>
+        <mat-icon (click)="openModal(product)">edit</mat-icon>
       </button>
     </div>
     <div>

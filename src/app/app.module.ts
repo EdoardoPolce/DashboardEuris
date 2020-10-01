@@ -17,6 +17,8 @@ import {ProductCardComponent} from './dashboard/panel-list/product-card/product-
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
+import {ProductModalComponent} from './dashboard/product-modal/product-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import {MatCardModule} from '@angular/material/card';
     DashboardComponent,
     PanelListComponent,
     ProductCardComponent,
+    ProductModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,10 +41,12 @@ import {MatCardModule} from '@angular/material/card';
     RoutingModule,
     FlexLayoutModule,
     MatExpansionModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ProductModalComponent]
 })
 export class AppModule {
 }
