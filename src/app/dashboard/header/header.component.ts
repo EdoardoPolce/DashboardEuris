@@ -30,7 +30,12 @@ export class HeaderComponent implements OnInit {
 
   openModal(): void {
     const dialogRef = this.dialog.open(ProductModalComponent, {
-      width: '250px',
+      minWidth: '250px',
+      maxWidth: '500px',
+      data: {
+        title: 'Aggiungi Prodotto',
+        type: 'new'
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

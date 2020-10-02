@@ -1,27 +1,29 @@
 <mat-card>
   <mat-card-content>
     <div fxLayout="row" fxLayoutAlign="space-between" class="card-title">
-      <h2>{{product.title}}</h2>
-      <button mat-icon-button class="edit-icon">
-        <mat-icon (click)="openModal(product)">edit</mat-icon>
-      </button>
+      <h2>{{product.data.title}}</h2>
+      <div class="button-container">
+        <button mat-icon-button class="delete-icon">
+          <mat-icon (click)="deleteProduct(product)">delete</mat-icon>
+        </button>
+      </div>
     </div>
     <div>
-      <p>Categoria: {{product.category}}</p>
-      <p>{{product.description}}</p>
-      <p>Prezzo: {{product.price}}</p>
-      <p>Dipendente: {{product.employee}}</p>
+      <p>Categoria: {{product.data.category}}</p>
+      <p>{{product.data.description}}</p>
+      <p>Prezzo: {{product.data.price}}</p>
+      <p>Dipendente: {{product.data.employee}}</p>
       <mat-accordion>
-        <mat-expansion-panel [disabled]="!product.reviews">
+        <mat-expansion-panel [disabled]="!product.data.reviews">
           <mat-expansion-panel-header>
             <mat-panel-title>
               Commenti
             </mat-panel-title>
             <mat-panel-description>
-              <div>{{product.reviews && product.reviews.length}}</div>
+              <div>{{product.data.reviews && product.data.reviews.length}}</div>
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <div *ngFor="let review of product.reviews">
+          <div *ngFor="let review of product.data.reviews">
             <mat-accordion class="review-accordion">
               <mat-expansion-panel>
                 <mat-expansion-panel-header>

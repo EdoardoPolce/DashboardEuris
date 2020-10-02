@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ProductDetail} from '../../../classes/product';
+import {Product, ProductDetail} from '../../../classes/product';
 import {MatDialog} from '@angular/material/dialog';
 import {ProductModalComponent} from '../../product-modal/product-modal.component';
+import {StoreServiceService} from '../../../services/store-service.service';
 
 @Component({
   selector: 'app-product-card',
@@ -10,22 +11,27 @@ import {ProductModalComponent} from '../../product-modal/product-modal.component
 })
 export class ProductCardComponent implements OnInit {
 
-  @Input() product: ProductDetail;
+  @Input() product: Product;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private storeService: StoreServiceService) {
   }
 
   ngOnInit(): void {
   }
 
-  openModal(product: ProductDetail): void {
+  deleteProduct(product: Product): void {
     const dialogRef = this.dialog.open(ProductModalComponent, {
-      width: '250px',
-      data: product
+      minWidth: '250px',
+      maxWidth: '500px',
+      data: {
+        title: 'Elimina Prodotto',
+        productData: product,
+        type: 'delete'
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.storeService.reloadEvent.next(true);
     });
   }
 

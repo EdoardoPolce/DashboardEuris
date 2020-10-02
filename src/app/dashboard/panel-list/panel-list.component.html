@@ -1,6 +1,6 @@
 <div *ngIf="loaded" fxLayout="column" fxFlex="100" [fxLayout.gt-xs]="columnLayout ? 'row wrap' : 'column'">
   <div class="product" fxFlex.gt-md="30" fxFlex="40" *ngFor="let product of productsList">
-    <app-product-card [product]="product.data"></app-product-card>
+    <app-product-card [product]="product"></app-product-card>
   </div>
   <div class="paginator-container">
     <mat-paginator [length]="pageEvent.length"
