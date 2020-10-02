@@ -2,12 +2,13 @@
   <div class="product" fxFlex.gt-md="30" fxFlex="40" *ngFor="let product of productsList">
     <app-product-card [product]="product.data"></app-product-card>
   </div>
-  <mat-paginator [length]="pageEvent.length"
-                 [pageSize]="pageEvent.pageSize"
-                 [pageSizeOptions]="pageSizeOptions"
-                 (page)="changePage($event)">
-  </mat-paginator>
-
+  <div class="paginator-container">
+    <mat-paginator [length]="pageEvent.length"
+                   [pageSize]="pageEvent.pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="changePage($event)">
+    </mat-paginator>
+  </div>
 </div>
 
 <div class="loader" fxLayout="row" fxLayoutAlign="space-around center" style="height:100%" *ngIf="!loaded">
