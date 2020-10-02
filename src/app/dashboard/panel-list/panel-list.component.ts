@@ -31,21 +31,23 @@ export class PanelListComponent implements OnInit, OnDestroy {
     this.layoutSub = this.storeService.columnLayout.subscribe(value => {
       this.columnLayout = value;
     });
-    this.productSubscription = this.storeService.getProductList('ijpxNJLM732vm8AeajMR', this.pageEvent.pageIndex, this.pageEvent.pageSize)
-      .subscribe(products => {
-          this.pageEvent.length = products.length;
-          this.productsList = products.list;
-          this.loaded = true;
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    this.productSubscription = this.storeService.reloadEvent.subscribe(value => {
+      this.storeService.getProductList('ijpxNJLM732vm8AeajMR', this.pageEvent.pageIndex, this.pageEvent.pageSize)
+        .subscribe(products => {
+            this.pageEvent.length = products.length;
+            this.productsList = products.list;
+            this.loaded = true;
+          },
+          error => {
+            console.log(error);
+          });
+    });
   }
 
   public changePage(event: PageEvent): void {
     this.pageSubscription = this.storeService.getProductList('ijpxNJLM732vm8AeajMR', event.pageIndex + 1, event.pageSize)
       .subscribe(products => {
+        this.pageEvent.pageIndex = event.pageIndex + 1;
         this.pageEvent.length = products.length;
         this.productsList = products.list;
       });

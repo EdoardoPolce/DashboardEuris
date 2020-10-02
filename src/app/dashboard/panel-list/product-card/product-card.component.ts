@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Product, ProductDetail} from '../../../classes/product';
+import {Product} from '../../../classes/product';
 import {MatDialog} from '@angular/material/dialog';
 import {ProductModalComponent} from '../../product-modal/product-modal.component';
 import {StoreServiceService} from '../../../services/store-service.service';
@@ -31,7 +31,9 @@ export class ProductCardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.storeService.reloadEvent.next(true);
+      if (result) {
+        this.storeService.reloadEvent.next(true);
+      }
     });
   }
 

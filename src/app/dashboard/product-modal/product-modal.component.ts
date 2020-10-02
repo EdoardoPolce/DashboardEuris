@@ -31,14 +31,14 @@ export class ProductModalComponent implements OnInit, OnDestroy {
         category: new FormControl('', Validators.required),
         price: new FormControl('', Validators.required),
         employee: new FormControl('', Validators.required),
-        description: new FormControl('', Validators.required),
+        description: new FormControl(''),
       });
     }
   }
 
   public deleteProduct(id): void {
     this.deleteProductSub = this.storeService.deleteProduct('ijpxNJLM732vm8AeajMR', id).subscribe(() =>
-        this.dialogRef.close()
+        this.dialogRef.close('productDeleted')
       , error => {
         console.log(error);
       });
@@ -47,9 +47,9 @@ export class ProductModalComponent implements OnInit, OnDestroy {
   public formSubmit(form: FormGroup): void {
     const product: ProductDetail = form.getRawValue();
     this.storeService.addProduct('ijpxNJLM732vm8AeajMR', product).subscribe(() =>
-        this.dialogRef.close(),
+        this.dialogRef.close('productAdded'),
       error => {
-        console.log(error);
+        this.dialogRef.close('productAdded?');
       }
     );
   }

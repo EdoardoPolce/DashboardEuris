@@ -16,6 +16,7 @@ export class StoreServiceService {
   constructor(private httpClient: HttpClient) {
     this.columnLayout = new BehaviorSubject<boolean>(true);
     this.pageUrl = new BehaviorSubject<string>('/');
+    this.reloadEvent = new BehaviorSubject<boolean>(false);
   }
 
   public getStoreData(id: string): Observable<any> {
