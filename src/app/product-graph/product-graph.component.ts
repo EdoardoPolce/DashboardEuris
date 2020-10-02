@@ -12,6 +12,8 @@ import {ActivatedRoute} from '@angular/router';
 export class ProductGraphComponent implements OnInit {
 
   public chart: any = [];
+  public loaded: boolean;
+  public errorMessage: boolean;
 
   constructor(private storeService: StoreServiceService, private route: ActivatedRoute) {
   }
@@ -19,35 +21,39 @@ export class ProductGraphComponent implements OnInit {
   ngOnInit(): void {
     this.storeService.pageUrl.next(this.route.snapshot.url[0].path);
     this.storeService.getStats('ijpxNJLM732vm8AeajMR').subscribe(graph => {
+        const graphProducts = [];
+        const graphCategory = [];
 
-      const graphProducts = [];
-      const graphCategory = [];
+        graph.forEach(value => {
+          graphProducts.push(value.numberOfProducts);
+          graphCategory.push(value.category);
+        });
 
-      graph.forEach(value => {
-        graphProducts.push(value.numberOfProducts);
-        graphCategory.push(value.category);
-      });
+        const graphData = {
+          datasets: [{
+            data: graphProducts,
+            backgroundColor: [
+              'red',
+              'blue',
+              'green',
+              'purple',
+              'yellow',
+              'orange'
+            ]
+          }],
+          labels: graphCategory
+        };
 
-      const graphData = {
-        datasets: [{
-          data: graphProducts,
-          backgroundColor: [
-            'red',
-            'blue',
-            'green',
-            'purple',
-            'yellow',
-            'orange'
-          ]
-        }],
-        labels: graphCategory
-      };
-
-      this.chart = new Chart('canvas', {
-        data: graphData,
-        type: 'polarArea',
-      });
-    });
+        this.chart = new Chart('canvas', {
+          data: graphData,
+          type: 'polarArea',
+        });
+        this.loaded = true;
+      }, error => {
+        this.errorMessage = error;
+        this.loaded = true;
+      }
+    );
   }
 
 }
