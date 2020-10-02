@@ -1,10 +1,13 @@
 <mat-toolbar color="primary">
-  <span>{{appName}}</span>
-  <span class="example-spacer"></span>
-  <button [fxHide]="true" [fxHide.gt-xs]="false" (click)="changeLayout()" mat-icon-button class="menu-icon">
+  <span class="title" (click)="goToHome()">{{appName}}</span>
+  <span class="spacer"></span>
+  <button (click)="goToGraph()" mat-icon-button class="menu-graph">
+    <mat-icon>pie_chart</mat-icon>
+  </button>
+  <button [fxHide]="true" [fxHide.gt-xs]="hideButton" (click)="changeLayout()" mat-icon-button class="menu-icon">
     <mat-icon>{{iconValue}}</mat-icon>
   </button>
-  <button  mat-icon-button class="plus-icon">
+  <button [fxHide]="hideButton" mat-icon-button class="plus-icon">
     <mat-icon (click)="openModal()">add</mat-icon>
   </button>
 </mat-toolbar>

@@ -7,7 +7,6 @@ import {HeaderComponent} from './dashboard/header/header.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
-import {RouterModule} from '@angular/router';
 import {RoutingModule} from './routing/routing.module';
 import {HttpClientModule} from '@angular/common/http';
 import {DashboardComponent} from './dashboard/dashboard.component';
@@ -23,6 +22,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import {ProductGraphComponent} from './product-graph/product-graph.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import {MatInputModule} from '@angular/material/input';
     PanelListComponent,
     ProductCardComponent,
     ProductModalComponent,
+    ProductGraphComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,6 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    RouterModule,
     RoutingModule,
     FlexLayoutModule,
     MatExpansionModule,
@@ -51,7 +51,7 @@ import {MatInputModule} from '@angular/material/input';
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

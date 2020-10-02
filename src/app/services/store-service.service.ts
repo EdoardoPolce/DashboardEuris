@@ -10,8 +10,12 @@ import {ProductDetail} from '../classes/product';
 export class StoreServiceService {
 
   public reloadEvent: BehaviorSubject<boolean>;
+  public columnLayout: BehaviorSubject<boolean>;
+  public pageUrl: BehaviorSubject<string>;
 
   constructor(private httpClient: HttpClient) {
+    this.columnLayout = new BehaviorSubject<boolean>(true);
+    this.pageUrl = new BehaviorSubject<string>('/');
   }
 
   public getStoreData(id: string): Observable<any> {

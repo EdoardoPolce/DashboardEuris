@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {StoreServiceService} from '../../services/store-service.service';
 import {Product} from '../../classes/product';
 import {PageEvent} from '@angular/material/paginator';
@@ -21,12 +21,16 @@ export class PanelListComponent implements OnInit, OnDestroy {
     length: null
   };
   public pageSizeOptions: number[] = [6, 12, 24, 48];
-  @Input() columnLayout: boolean;
+  public columnLayout: boolean;
+  public layoutSub: Subscription;
 
   constructor(private storeService: StoreServiceService) {
   }
 
   ngOnInit(): void {
+    this.layoutSub = this.storeService.columnLayout.subscribe(value => {
+      this.columnLayout = value;
+    });
     this.productSubscription = this.storeService.getProductList('ijpxNJLM732vm8AeajMR', this.pageEvent.pageIndex, this.pageEvent.pageSize)
       .subscribe(products => {
           this.pageEvent.length = products.length;
@@ -42,13 +46,16 @@ export class PanelListComponent implements OnInit, OnDestroy {
   public changePage(event: PageEvent): void {
     this.pageSubscription = this.storeService.getProductList('ijpxNJLM732vm8AeajMR', event.pageIndex + 1, event.pageSize)
       .subscribe(products => {
-      this.pageEvent.length = products.length;
-      this.productsList = products.list;
-    });
+        this.pageEvent.length = products.length;
+        this.productsList = products.list;
+      });
   }
 
   ngOnDestroy(): void {
     this.productSubscription.unsubscribe();
-    this.pageSubscription.unsubscribe();
+    if (this.pageSubscription) {
+      this.pageSubscription.unsubscribe();
+    }
+    this.layoutSub.unsubscribe();
   }
 }

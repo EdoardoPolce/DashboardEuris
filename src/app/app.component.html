@@ -1,3 +1,4 @@
-<app-dashboard></app-dashboard>
+<app-header (changeLayoutValue)="changeLayout($event)" [isMobile]="isMobile" [appName]="appName"></app-header>
+<router-outlet></router-outlet>
 
 
