@@ -11,15 +11,18 @@
       <p>{{product.description}}</p>
       <p>Prezzo: {{product.price}}</p>
       <p>Dipendente: {{product.employee}}</p>
-      <mat-accordion *ngIf="product.reviews">
-        <mat-expansion-panel>
+      <mat-accordion>
+        <mat-expansion-panel [disabled]="!product.reviews">
           <mat-expansion-panel-header>
             <mat-panel-title>
               Commenti
             </mat-panel-title>
+            <mat-panel-description>
+              <div>{{product.reviews && product.reviews.length}}</div>
+            </mat-panel-description>
           </mat-expansion-panel-header>
           <div *ngFor="let review of product.reviews">
-            <mat-accordion class="review-accordion" *ngIf="product.reviews">
+            <mat-accordion class="review-accordion">
               <mat-expansion-panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
