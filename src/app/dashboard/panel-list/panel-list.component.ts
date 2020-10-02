@@ -49,6 +49,7 @@ export class PanelListComponent implements OnInit, OnDestroy {
       .subscribe(products => {
         this.pageEvent.pageIndex = event.pageIndex + 1;
         this.pageEvent.length = products.length;
+        this.pageEvent.pageSize = event.pageSize;
         this.productsList = products.list;
       });
   }
