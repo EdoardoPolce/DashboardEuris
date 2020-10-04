@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-content>
     <div fxLayout="row" fxLayoutAlign="space-between" class="card-title">
-      <h2>{{product.data.title}}</h2>
+      <h2 class="card-title">{{product.data.title}}</h2>
       <div class="button-container">
         <button mat-icon-button class="delete-icon">
           <mat-icon (click)="deleteProduct(product)">delete</mat-icon>
@@ -12,7 +12,7 @@
       <table fxFill>
         <tr>
           <td>Categoria:</td>
-          <td >{{product.data.category | titlecase}}</td>
+          <td>{{product.data.category | titlecase}}</td>
         </tr>
         <tr>
           <td>Descrizione:</td>
@@ -23,7 +23,6 @@
           <td >{{product.data.price}}</td>
         </tr>
         <tr>
-
           <td>Dipendente:</td>
           <td >{{product.data.employee | titlecase}}</td>
         </tr>
