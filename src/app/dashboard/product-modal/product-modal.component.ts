@@ -29,7 +29,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
       this.productForm = this.fb.group({
         title: new FormControl('', Validators.required),
         category: new FormControl('', Validators.required),
-        price: new FormControl('', Validators.required),
+        price: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
         employee: new FormControl('', Validators.required),
         description: new FormControl(''),
       });
@@ -49,7 +49,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
     this.storeService.addProduct('ijpxNJLM732vm8AeajMR', product).subscribe(() =>
         this.dialogRef.close('productAdded'),
       error => {
-        this.dialogRef.close('productAdded?');
+        this.dialogRef.close();
       }
     );
   }

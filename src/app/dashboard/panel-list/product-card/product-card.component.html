@@ -9,37 +9,56 @@
       </div>
     </div>
     <div>
-      <p>Categoria: {{product.data.category}}</p>
-      <p>{{product.data.description}}</p>
-      <p>Prezzo: {{product.data.price}}</p>
-      <p>Dipendente: {{product.data.employee}}</p>
-      <mat-accordion>
-        <mat-expansion-panel [disabled]="!product.data.reviews">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Commenti
-            </mat-panel-title>
-            <mat-panel-description>
-              <div>{{product.data.reviews && product.data.reviews.length}}</div>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div *ngFor="let review of product.data.reviews">
-            <mat-accordion class="review-accordion">
-              <mat-expansion-panel>
+      <table fxFill>
+        <tr>
+          <td>Categoria:</td>
+          <td fxLayoutAlign="end">{{product.data.category}}</td>
+        </tr>
+        <tr>
+          <td>Descrizione:</td>
+          <td fxLayoutAlign="end">{{product.data.description}}</td>
+        </tr>
+        <tr>
+          <td>Prezzo:</td>
+          <td fxLayoutAlign="end">{{product.data.price}}</td>
+        </tr>
+        <tr>
+
+          <td>Dipendente:</td>
+          <td fxLayoutAlign="end">{{product.data.employee}}</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <mat-accordion>
+              <mat-expansion-panel [disabled]="!product.data.reviews">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    <div>{{review.title}}</div>
+                    Commenti
                   </mat-panel-title>
                   <mat-panel-description>
-                    <div>{{review.user}}</div>
+                    <div>{{product.data.reviews && product.data.reviews.length}}</div>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
-                <p>{{review.description}}</p>
+                <div *ngFor="let review of product.data.reviews">
+                  <mat-accordion class="review-accordion">
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <div>{{review.title}}</div>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                          <div>{{review.user}}</div>
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <p>{{review.description}}</p>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                </div>
               </mat-expansion-panel>
             </mat-accordion>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
+          </td>
+        </tr>
+      </table>
     </div>
   </mat-card-content>
 </mat-card>

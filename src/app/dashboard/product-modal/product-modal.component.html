@@ -9,7 +9,7 @@
 </div>
 
 <div *ngIf="data.type !== 'delete'">
-  <form [formGroup]="productForm" fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="2rem">
+  <form [formGroup]="productForm" fxLayout="row wrap" fxLayoutAlign="space between" fxLayoutGap="2rem">
     <mat-form-field>
       <mat-label>Titolo</mat-label>
       <input matInput formControlName="title">
@@ -30,7 +30,7 @@
       <input matInput formControlName="employee">
     </mat-form-field>
 
-    <mat-form-field class="full-width">
+    <mat-form-field fxFill class="full-width">
       <mat-label>Descrizione</mat-label>
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
