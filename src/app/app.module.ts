@@ -8,7 +8,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {RoutingModule} from './routing/routing.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {PanelListComponent} from './dashboard/panel-list/panel-list.component';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -25,6 +25,9 @@ import {MatInputModule} from '@angular/material/input';
 import {ProductGraphComponent} from './product-graph/product-graph.component';
 import {ToastrModule} from 'ngx-toastr';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { NotFoundComponent } from './error-page/not-found/not-found.component';
+import { ServerErrorComponent } from './error-page/server-error/server-error.component';
+import {InterceptorService} from './interceptor/interceptor-service';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     PanelListComponent,
     ProductCardComponent,
     ProductModalComponent,
-    ProductGraphComponent
+    ProductGraphComponent,
+    NotFoundComponent,
+    ServerErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ToastrModule.forRoot(),
     MatTooltipModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent],
   entryComponents: [ProductModalComponent]
 })

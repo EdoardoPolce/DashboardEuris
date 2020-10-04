@@ -9,11 +9,12 @@ import {environment} from '../environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy{
+export class AppComponent implements OnInit, OnDestroy {
 
   private storeSub: Subscription;
   public appName: string;
   public isMobile: boolean;
+  public loaded: boolean;
 
   constructor(private storeService: StoreServiceService) {
   }
@@ -23,11 +24,13 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
-    this.storeSub = (this.storeService.getStoreData(environment.idStore)).subscribe((data) =>
-      this.appName = data.name,
-    error => {
-      console.log(error);
-    });
+    this.storeSub = (this.storeService.getStoreData(environment.idStore)).subscribe((data) => {
+        this.loaded = true;
+        this.appName = data.name;
+      },
+      error => {
+        this.loaded = true;
+      });
   }
 
   ngOnDestroy(): void {
