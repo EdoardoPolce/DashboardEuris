@@ -23,6 +23,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {ProductGraphComponent} from './product-graph/product-graph.component';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {ProductGraphComponent} from './product-graph/product-graph.component';
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

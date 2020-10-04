@@ -4,6 +4,7 @@ import {Product, ProductDetail} from '../../classes/product';
 import {StoreServiceService} from '../../services/store-service.service';
 import {Subscription} from 'rxjs';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-modal',
@@ -18,7 +19,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
 
   constructor(public dialogRef: MatDialogRef<ProductModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, private storeService: StoreServiceService,
-              private fb: FormBuilder) {
+              private fb: FormBuilder, private toast: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -37,18 +38,23 @@ export class ProductModalComponent implements OnInit, OnDestroy {
   }
 
   public deleteProduct(id): void {
-    this.deleteProductSub = this.storeService.deleteProduct('ijpxNJLM732vm8AeajMR', id).subscribe(() =>
-        this.dialogRef.close('productDeleted')
-      , error => {
-        console.log(error);
-      });
+    this.deleteProductSub = this.storeService.deleteProduct('ijpxNJLM732vm8AeajMR', id).subscribe(() => {
+
+      this.toast.success('Prodotto cancellato');
+      this.dialogRef.close('productDeleted');
+    }, error => {
+      this.toast.error('Qualcosa è andato storto, Riprova');
+    });
   }
 
   public formSubmit(form: FormGroup): void {
     const product: ProductDetail = form.getRawValue();
-    this.storeService.addProduct('ijpxNJLM732vm8AeajMR', product).subscribe(() =>
-        this.dialogRef.close('productAdded'),
+    this.storeService.addProduct('ijpxNJLM732vm8AeajMR', product).subscribe(() => {
+        this.toast.success('Prodotto aggiunto');
+        this.dialogRef.close('productAdded');
+      },
       error => {
+        this.toast.error('Qualcosa è andato storto, Riprova');
         this.dialogRef.close();
       }
     );
