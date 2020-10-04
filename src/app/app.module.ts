@@ -24,6 +24,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {ProductGraphComponent} from './product-graph/product-graph.component';
 import {ToastrModule} from 'ngx-toastr';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {ToastrModule} from 'ngx-toastr';
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent],

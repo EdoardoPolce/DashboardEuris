@@ -12,20 +12,20 @@
       <table fxFill>
         <tr>
           <td>Categoria:</td>
-          <td fxLayoutAlign="end">{{product.data.category}}</td>
+          <td >{{product.data.category}}</td>
         </tr>
         <tr>
           <td>Descrizione:</td>
-          <td fxLayoutAlign="end">{{product.data.description}}</td>
+          <td [matTooltip]="product.data.description" [matTooltipShowDelay]="1000">{{product.data.description}}</td>
         </tr>
         <tr>
           <td>Prezzo:</td>
-          <td fxLayoutAlign="end">{{product.data.price}}</td>
+          <td >{{product.data.price}}</td>
         </tr>
         <tr>
 
           <td>Dipendente:</td>
-          <td fxLayoutAlign="end">{{product.data.employee}}</td>
+          <td >{{product.data.employee}}</td>
         </tr>
         <tr>
           <td colspan="2">
