@@ -28,7 +28,7 @@ export class StoreServiceService {
   }
 
   public addProduct(idStore: string, product: ProductDetail): Observable<any> {
-    return this.httpClient.post(`${environment.basePath}stores/${idStore}/products`, product);
+    return this.httpClient.post(`${environment.basePath}stores/${idStore}/products`, product, {observe: 'response'});
   }
 
   public deleteProduct(idStore: string, idProduct: string): Observable<any> {

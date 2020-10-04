@@ -54,8 +54,13 @@ export class ProductModalComponent implements OnInit, OnDestroy {
         this.dialogRef.close('productAdded');
       },
       error => {
-        this.toast.error('Qualcosa è andato storto, Riprova');
-        this.dialogRef.close();
+        if (error.status === 200) {
+          this.toast.success('Prodotto aggiunto');
+          this.dialogRef.close('productAdded');
+        } else {
+          this.toast.error('Qualcosa è andato storto, Riprova');
+          this.dialogRef.close();
+        }
       }
     );
   }
