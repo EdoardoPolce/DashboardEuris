@@ -14,7 +14,6 @@ export class ProductGraphComponent implements OnInit {
 
   public chart: any = [];
   public loaded: boolean;
-  public errorMessage: boolean;
 
   constructor(private storeService: StoreServiceService, private route: ActivatedRoute) {
   }
@@ -51,7 +50,6 @@ export class ProductGraphComponent implements OnInit {
         });
         this.loaded = true;
       }, error => {
-        this.errorMessage = error;
         this.loaded = true;
       }
     );
