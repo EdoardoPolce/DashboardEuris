@@ -5,6 +5,7 @@ import {StoreServiceService} from '../../services/store-service.service';
 import {Subscription} from 'rxjs';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-product-modal',
@@ -38,7 +39,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
   }
 
   public deleteProduct(id): void {
-    this.deleteProductSub = this.storeService.deleteProduct('ijpxNJLM732vm8AeajMR', id).subscribe(() => {
+    this.deleteProductSub = this.storeService.deleteProduct(environment.idStore, id).subscribe(() => {
 
       this.toast.success('Prodotto cancellato');
       this.dialogRef.close('productDeleted');
@@ -49,7 +50,7 @@ export class ProductModalComponent implements OnInit, OnDestroy {
 
   public formSubmit(form: FormGroup): void {
     const product: ProductDetail = form.getRawValue();
-    this.storeService.addProduct('ijpxNJLM732vm8AeajMR', product).subscribe(() => {
+    this.storeService.addProduct(environment.idStore, product).subscribe(() => {
         this.toast.success('Prodotto aggiunto');
         this.dialogRef.close('productAdded');
       },

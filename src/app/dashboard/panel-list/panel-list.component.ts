@@ -3,6 +3,7 @@ import {StoreServiceService} from '../../services/store-service.service';
 import {Product} from '../../classes/product';
 import {PageEvent} from '@angular/material/paginator';
 import {Subscription} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-panel-list',
@@ -32,7 +33,7 @@ export class PanelListComponent implements OnInit, OnDestroy {
       this.columnLayout = value;
     });
     this.productSubscription = this.storeService.reloadEvent.subscribe(value => {
-      this.storeService.getProductList('ijpxNJLM732vm8AeajMR', this.pageEvent.pageIndex, this.pageEvent.pageSize)
+      this.storeService.getProductList(environment.idStore, this.pageEvent.pageIndex, this.pageEvent.pageSize)
         .subscribe(products => {
             this.pageEvent.length = products.length;
             this.productsList = products.list;
@@ -45,7 +46,7 @@ export class PanelListComponent implements OnInit, OnDestroy {
   }
 
   public changePage(event: PageEvent): void {
-    this.pageSubscription = this.storeService.getProductList('ijpxNJLM732vm8AeajMR', event.pageIndex + 1, event.pageSize)
+    this.pageSubscription = this.storeService.getProductList(environment.idStore, event.pageIndex + 1, event.pageSize)
       .subscribe(products => {
         this.pageEvent.pageIndex = event.pageIndex + 1;
         this.pageEvent.length = products.length;

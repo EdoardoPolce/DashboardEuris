@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {StoreServiceService} from './services/store-service.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,7 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
-    this.storeSub = (this.storeService.getStoreData('ijpxNJLM732vm8AeajMR')).subscribe((data) =>
+    this.storeSub = (this.storeService.getStoreData(environment.idStore)).subscribe((data) =>
       this.appName = data.name,
     error => {
       console.log(error);

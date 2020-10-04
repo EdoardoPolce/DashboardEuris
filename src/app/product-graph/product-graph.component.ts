@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {StoreServiceService} from '../services/store-service.service';
 import * as Chart from 'chart.js';
 import {ActivatedRoute} from '@angular/router';
+import {environment} from '../../environments/environment';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class ProductGraphComponent implements OnInit {
 
   ngOnInit(): void {
     this.storeService.pageUrl.next(this.route.snapshot.url[0].path);
-    this.storeService.getStats('ijpxNJLM732vm8AeajMR').subscribe(graph => {
+    this.storeService.getStats(environment.idStore).subscribe(graph => {
         const graphProducts = [];
         const graphCategory = [];
 
