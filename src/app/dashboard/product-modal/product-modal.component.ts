@@ -55,6 +55,8 @@ export class ProductModalComponent implements OnInit, OnDestroy {
         this.dialogRef.close('productAdded');
       },
       error => {
+        // The api response enter in the error of the subscribe to the http request but with a status code 200 ok
+        // this is a workaroud to make the add product function work without changing the api
         if (error.status === 200) {
           this.toast.success('Prodotto aggiunto');
           this.dialogRef.close('productAdded');
